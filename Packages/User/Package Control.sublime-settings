@@ -1,0 +1,52 @@
+{
+	"bootstrapped": true,
+	"channels":
+	[
+		"http://packagecontrol.cn/channel_v3.json"
+	],
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AceJump",
+		"AlignTab",
+		"All Autocomplete",
+		"AutoFileName",
+		"AutoPEP8",
+		"BracketHighlighter",
+		"Case Conversion",
+		"Chain of Command",
+		"ChineseLocalizations",
+		"ChromeREPL",
+		"DocBlockr",
+		"Dockerfile Syntax Highlighting",
+		"Emmet",
+		"ESLint-Formatter",
+		"ExpandRegion",
+		"FileBrowser",
+		"FileManager",
+		"Generic Config",
+		"HTML-CSS-JS Prettify",
+		"HTMLAttributes",
+		"MarkdownEditing",
+		"MarkdownTOC",
+		"Material Theme",
+		"Materialize",
+		"More Python Completions",
+		"Package Control",
+		"PackageResourceViewer",
+		"PackageSync",
+		"Pretty JSON",
+		"Sass",
+		"SFTP",
+		"SublimeLinter",
+		"SublimeLinter-eslint",
+		"SublimeLinter-stylelint",
+		"SublimeREPL",
+		"Terminus",
+		"Trimmer",
+		"Vue Syntax Highlight",
+		"Vuejs Snippets"
+	]
+}

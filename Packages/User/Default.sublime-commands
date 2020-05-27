@@ -1,0 +1,34 @@
+[
+    {
+        "caption": "my: open file in brower",
+        "command": "open_in_brower"
+    },
+    {
+        "caption": "my: open js doc",
+        "command": "open_js_doc"
+    },
+    {
+        "caption": "my: get Date",
+        "command": "get_date"
+    },
+    {
+        "caption": "my: open User dir",
+        "command": "open_user_dir"
+    },
+    {
+        "caption": "my: open Finder",
+        "command": "open_finder"
+    },
+    {
+        "caption": "my: open completions file",
+        "command": "open_completions_file"
+    },
+    {
+        "caption": "my: open tips",
+        "command": "open_tips"
+    },
+    {
+        "caption": "my: sel to completion",
+        "command": "sel_to_completion"
+    },
+]

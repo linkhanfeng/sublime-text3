@@ -1,0 +1,8 @@
+{
+    "syntax_mapping": {
+        // "Packages/PHP/PHP.sublime-syntax": [
+        //     "<\\?php",
+        //     "<\\?=",
+        // ],
+    },
+}

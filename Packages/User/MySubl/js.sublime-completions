@@ -1,0 +1,220 @@
+{
+  "scope": "source.js",
+  "completions": [
+    // 其他
+    {"trigger": "import                    | hh,other", "contents": "import { ${1:modle} } from '${2:path}'"},
+    {"trigger": "require                   | hh,other", "contents": "const ${1:name} = require('${2:path}')"},
+    {"trigger": "continue                  | hh,other", "contents": "continue"},
+    {"trigger": "break                     | hh,other", "contents": "break"},
+    {"trigger": "length                    | hh,other", "contents": "length"},
+    // 入门篇 (basic)
+    //     导论                                          bas - sum
+    //     历史                                          bas - hist
+    //     基本语法                                      bas - grammar
+    {"trigger": "number_7dt                | hh,base", "contents": "number"},
+    {"trigger": "string_7dt                | hh,base", "contents": "string"},
+    {"trigger": "boolean_7dt               | hh,base", "contents": "boolean"},
+    {"trigger": "undefined_7dt             | hh,base", "contents": "undefined"},
+    {"trigger": "null_7dt                  | hh,base", "contents": "null"},
+    {"trigger": "object_7dt                | hh,base", "contents": "object"},
+    {"trigger": "symbol_7dt                | hh,base", "contents": "symbol"},
+    {"trigger": "return                    | hh,base", "contents": "return"},
+    {"trigger": "use strict                | hh,base", "contents": "'use strict'\n"},
+    {"trigger": "console.log               | hh,base", "contents": "console.log(${1})"},
+    {"trigger": "if                        | hh,base", "contents": "if (${3:}) {\n\t${4:}\n}"},
+    {"trigger": "ife                       | hh,base", "contents": "if (${3:}) {\n\t${4:}\n} else {\n\tee\n}\n"},
+    {"trigger": "ifelseif                  | hh,base", "contents": "if (${3:}) {\n} else if (${4:}) {\n} else {\n}"},
+    {"trigger": "switch                    | hh,base", "contents": "switch (${3:}) {\n\tcase ${4:}:\n\t\tbreak\n\tcase ${5:}:\n\t\tbreak\n\tdefault:\n}\n"},
+    {"trigger": "while                     | hh,base", "contents": "let ${1:i} = 0\nwhile (${1:i} < 100) {\n\t${1:i} = ${1:i} + 1\n}"},
+    {"trigger": "for                       | hh,base", "contents": "for (let ${3:i} = 0, len = arr.length; ${3:i} < len; ${3:i}++) {\n\t${4:// ...}\n}"},
+    {"trigger": "typeof                    | hh,data", "contents": "typeof ${1:数组,对象,null,均返回 object; instanceof 可以区分数组和对象}"},
+    {"trigger": "typeof                    | hh,data", "contents": "typeof ${1:数组,对象,null,均返回 object; instanceof 可以区分数组和对象}"},
+    // 数据类型 (type)
+    //     概述                                          typ - sum
+    //     null，undefined 和布尔值                      typ - null
+    //     数值                                          typ - num
+    {"trigger": "NaN                       | hh,data.num", "contents": "NaN"},
+    {"trigger": "isNaN()                   | hh,data.num", "contents": "isNaN(${1})"},
+    {"trigger": "Infinity                  | hh,data.num", "contents": "Infinity${1:-Infinity}"},
+    {"trigger": "isFinite()                | hh,data.num", "contents": "isFinite(${1:正常的number返回ture})"},
+    {"trigger": "parseInt()                | hh,data.num", "contents": "parseInt(${1:第一个字符不能转化,则返回NaN 包括空字符串}, ${2:10})"},
+    {"trigger": "parseFloat()              | hh,data.num", "contents": "parseFloat(${1:第一个字符不能转化,则返回NaN 包括空字符串})"},
+    //     字符串                                        typ - str
+    {"trigger": "base64Encode()            | hh,data.str", "contents": "window.btoa(encodeURIComponent(${1:转换为 0-9,Aa-Zz,/,+ 64个字符表示}))"},
+    {"trigger": "base64Decode()            | hh,data.str", "contents": "decodeURIComponent(window.atob(${1:base64字符串}))"},
+    //     对象                                          typ - obj
+    {"trigger": "delete                    | hh,data.obj", "contents": "delete ${1:o.p 只能删除自身的属性}"},
+    {"trigger": "in                        | hh,data.obj", "contents": "'p' in o 无法判断属性继承还是自身;推荐使用 hasOwnProperty 替代"},
+    {"trigger": "forIn                     | hh,data.obj", "contents": "for (var ${3:key包含继承的属性,使用keys()替代} in obj) {\n\t${3:key包含继承的属性,使用keys()替代}\n}"},
+    //     函数                                          typ - fun
+    {"trigger": "fun.A                     | hh,data.fun", "contents": "function ${3:name} (${4:}) {\n\t${5:// 函数是一种可执行的 值,同理命令式函数会提升,且是完整函数而不是undefind,函数表达式为undefind报错}\n}"},
+    {"trigger": "fun.B                     | hh,data.fun", "contents": "var ${3:name} = function (${4:}) {\n\t${5:// ...}\n}"},
+    {"trigger": "fun.BB                    | hh,data.fun", "contents": "var ${3:name} = function ${3:name} (${4:}) {\n\t${5:// ...}\n}"},
+    {"trigger": "fun.C                     | hh,data.fun", "contents": "var ${1:name} = new Function('${2:x}', 'return ${2:x}')"},
+    {"trigger": "f.name()                  | hh,data.fun", "contents": "name${1:函数名称,具名函数优先}"},
+    {"trigger": "f.length()                | hh,data.fun", "contents": "定义时的参数个数"},
+    {"trigger": "f.toString()              | hh,data.fun", "contents": "函数的源码"},
+    {"trigger": "f.scope                   | hh,data.fun", "contents": "var x = function () { // 函数本身的作用域: 是定义时所在的作用域，而不是调用时所在的作用域。\n\tconsole.log(a) // 此处的 a 是 window.a\n}\nfunction y (x) {\n\tvar a = 2\n\tx()\n}\ny(x) // 返回 undefined; 因为 函数x定义时的作用域在window下"},
+    {"trigger": "f.params                  | hh,data.fun", "contents": "var obj = { p: 1 }\nvar obj2 = { p: 'pp' }\nvar str = 'a'\nfunction f (o, s, o2) {\n\to.p = 2 // 指向同一个地址\n\ts = 'b' // 指向一个新地址,原地址不变\n\to2 = { p: '${3:}' } // 指向一个新地址,原地址不变\n}\nf(obj, str)\nconsole.log(obj.p) // 2 传址(pass by reference): 函数内和函数外的\\\"属性值\\\"用的同一个地址; 复合类型的值（数组、对象、其他函数）\nconsole.log(str) // a 传值(passes by value): 函数内不会影响函数外; 原始类型的值（数值、字符串、布尔值）\nconsole.log(obj2.p) // 'pp' 不会影响; 根本原因可以这样理解:属性值是一个地址的软连接; 而任何数据类型都是地址的硬链接;"},
+    {"trigger": "f.arguments               | hh,data.fun", "contents": "var args = Array.prototype.slice.call(arguments)"},
+    {"trigger": "f.IIFE.a                  | hh,data.fun", "contents": "(function (${3:}) {\n\t${4://}\n})();"},
+    {"trigger": "f.IIFE.b                  | hh,data.fun", "contents": "(function (${3:}) {\n\t${4://}\n}());"},
+    {"trigger": "f.IIFE.c                  | hh,data.fun", "contents": "true && (function (${3:}) {\n\t${4:// 两个IIFE同时使用可以不使用分号}\n})()"},
+    {"trigger": "f.eval()                  | hh,data.fun", "contents": "eval('${1:在当前作用域注入代码,不利于引擎优化,一般不推荐.}')"},
+    //     数组                                          typ - arr
+    {"trigger": "a.overview                | hh,data.arr", "contents": "var a = [0, 1]\nif (a['1'] === a[1.00] && a['1'] === a[1]) {\n\tconsole.log(true) // 本质上数组就是有序的 对象, 所以 index 本质上也是字符串\n}\na.c = 'c' // [0, 1, c: \\\"c\\\"] 本质上数组就是对象 typeof a; object\nObject.keys(a) // [\\\"0\\\", \\\"1\\\", \\\"c\\\"] 本质对象\na.forEach(index => { console.log(index) }) // 0,1,undefined 数组的方法无法应用于非整数index\n\nvar arr = ['a', 'b']\nconsole.log(arr.length) // 2\narr[1000] = 'e'\nconsole.log(arr.length, arr[2]) // 1001,undefined 比最大的那个整数键大1; 空位置返回 undefind\narr.length = 0 // [] 可以清空正常的数组"},
+    {"trigger": "a.arrayLike               | hh,data.arr", "contents": "Array.prototype.slice.call(${1:dom集合等类数组对象})"},
+    // 运算符 (operator)
+    //     算术运算符                                    opr - arit (arithmetic)
+    //     比较运算符                                    opr - compar (comparison)
+    //     布尔运算符                                    opr - bool
+    //     二进制位运算符                                opr - bit
+    //     其他运算符，运算顺序                          opr - prior (priority优先级)
+    // 语法特性 (grammar)
+    //     数据类型的转换                                gra - conv (conversion)
+    {"trigger": "Number()                  | hh,gram.conver", "contents": "Number(${1})"},
+    {"trigger": "String()                  | hh,gram.conver", "contents": "String(${1})"},
+    {"trigger": "Boolean()                 | hh,gram.conver", "contents": "Boolean(${1})"},
+    //     错误处理机制                                  gra - error
+    {"trigger": "throw                     | hh,gram.err", "contents": "throw new Error('${1:msg}')"},
+    {"trigger": "Error                     | hh,gram.err", "contents": "throw new Error('${1:msg}')"},
+    {"trigger": "SyntaxError               | hh,gram.err", "contents": "throw new SyntaxError('${1:语法错误}')"},
+    {"trigger": "ReferenceError            | hh,gram.err", "contents": "throw new ReferenceError('${1:引用不存在的变量}')"},
+    {"trigger": "RangeError                | hh,gram.err", "contents": "throw new RangeError('${1:值超出有效范围,数组长度,函数堆栈等}')"},
+    {"trigger": "TypeError                 | hh,gram.err", "contents": "throw new TypeError('${1:参数类型错误}')"},
+    {"trigger": "URIError                  | hh,gram.err", "contents": "throw new URIError('${1:url相关的函数}')"},
+    {"trigger": "EvalError                 | hh,gram.err", "contents": "throw new EvalError('${1:eval函数错误}')"},
+    {"trigger": "UserError                 | hh,gram.err", "contents": "\tfunction UserError (message = '自定义错误') {\n\t\tthis.message = message\n\t\tthis.name = 'UserError'\n\t}\n\tUserError.prototype = new Error()\n\tUserError.prototype.constructor = UserError"},
+    {"trigger": "err.message               | hh,gram.err", "contents": "message"},
+    {"trigger": "err.name                  | hh,gram.err", "contents": "name"},
+    {"trigger": "err.stack                 | hh,gram.err", "contents": "stack"},
+    {"trigger": "tryCatch                  | hh,gram.err", "contents": "// openFile()\ntry {\n\t// writeFile(Data)\n} catch (e) {\n\t// handleError(e)\n} finally {\n\t// 无错误->直接关闭文件; 有错误->处理完错误->关闭文件\n\t// closeFile()\n\t// 程序不中断继续往后执行\n}\n"},
+    //     编程风格                                      gra - style
+    //     console 对象与控制台                          gra - console
+    // 标准库 (stdlib)
+    //     Object 对象                                   std - obj
+    {"trigger": "Object()                  | hh,std.obj", "contents": "Object(${1:对象返回本身,确保一个值一定是对象})"},
+    {"trigger": "isObject(*) | hh,std.obj", "contents": "function isObject (value) {\n\treturn value === Object(value)\n}"},
+    {"trigger": "instanceof                  | hh,std.obj", "contents": "instanceof"},
+    {"trigger": "new Object()                  | hh,std.obj", "contents": "new Object(${1:})"},
+    {"trigger": "Object.keys()             | hh,std.obj", "contents": "Object.keys(${3:自身可枚举的属性})"},
+    {"trigger": "Object.length(*)             | hh,std.obj", "contents": "Object.keys(${1:}).length"},
+    {"trigger": "Object.getOwnPropertyNames()             | hh,std.obj", "contents": "Object.getOwnPropertyNames(${3:包括不可枚举属性,使用kes()代替})"},
+    {"trigger": "Object.assign()           | hh,std.obj", "contents": "Object.assign(${3:obj1,2,3..})"},
+
+    {"trigger": "Object.getOwnPropertyDescriptor()                  | hh,std.obj", "contents": "Object.getOwnPropertyDescriptor(${1:获取某个属性的描述对象。})"},
+    {"trigger": "Object.defineProperty()                  | hh,std.obj", "contents": "Object.defineProperty(${1:通过描述对象，定义某个属性。})"},
+    {"trigger": "Object.defineProperties()                  | hh,std.obj", "contents": "Object.defineProperties(${1:通过描述对象，定义多个属性。})"},
+    {"trigger": "Object.preventExtensions()                  | hh,std.obj", "contents": "Object.preventExtensions(${1:防止对象扩展。})"},
+    {"trigger": "Object.isExtensible()                  | hh,std.obj", "contents": "Object.isExtensible(${1:判断对象是否可扩展。})"},
+    {"trigger": "Object.seal()                  | hh,std.obj", "contents": "Object.seal(${1:禁止对象配置。})"},
+    {"trigger": "Object.isSealed()                  | hh,std.obj", "contents": "Object.isSealed(${1:判断一个对象是否可配置。})"},
+    {"trigger": "Object.freeze()                  | hh,std.obj", "contents": "Object.freeze(${1:冻结一个对象。})"},
+    {"trigger": "Object.isFrozen()                  | hh,std.obj", "contents": "Object.isFrozen(${1:判断一个对象是否被冻结。})"},
+    {"trigger": "Object.create()                  | hh,std.obj", "contents": "Object.create(${1:该方法可以指定原型对象和属性，返回一个新的对象。})"},
+    {"trigger": "Object.getPrototypeOf()                  | hh,std.obj", "contents": "Object.getPrototypeOf(${1:获取对象的Prototype对象。})"},
+    {"trigger": "obj.valueOf()                  | hh,std.obj", "contents": "obj.valueOf(${1:返回当前对象对应的值。})"},
+    {"trigger": "obj.toString()                  | hh,std.obj", "contents": "obj.toString(${1:返回当前对象对应的字符串形式。})"},
+    {"trigger": "obj.toLocaleString()                  | hh,std.obj", "contents": "obj.toLocaleString(${1:返回当前对象对应的本地字符串形式。})"},
+    {"trigger": "obj.hasOwnProperty()                  | hh,std.obj", "contents": "obj.hasOwnProperty(${1:判断某个属性是否为当前实例自身,还是继承的})"},
+    {"trigger": "obj.isPrototypeOf()                  | hh,std.obj", "contents": "obj.isPrototypeOf(${1:判断当前对象是否为另一个对象的原型。})"},
+    {"trigger": "obj.propertyIsEnumerable()                  | hh,std.obj", "contents": "obj.propertyIsEnumerable(${1:判断某个属性是否可枚举。})"},
+    //     属性描述对象                                  std - attr
+    //     Array 对象                                    std - arr
+    //                      构造函数
+    //                      静态方法
+    //                      Array.isArray()
+    //                      实例方法
+    //                      valueOf()，toString()
+    //                      push()，pop()
+    //                      shift()，unshift()
+    //                      join()
+    //                      concat()
+    //                      reverse()
+    //                      slice()
+    //                      splice()
+    //                      sort()
+    //                      map()
+    //                      forEach()
+    //                      filter()
+    //                      some()，every()
+    //                      reduce()，reduceRight()
+    //                      indexOf()，lastIndexOf()
+    //     包装对象                                      std - wrap (wrapper)
+    //     Boolean 对象                                  std - bool
+    //     Number 对象                                   std - num
+    //     String 对象                                   std - str
+    //     Math 对象                                     std - math
+    //     Date 对象                                     std - date
+    //     RegExp 对象                                   std - reg (regexp)
+    //     JSON 对象                                     std - json
+    {"trigger": "JSON.stringify()          | hh,std.json", "contents": "JSON.stringify(${1:参数2:属性数组或filter函数,参数3:可读性})"},
+    {"trigger": "JSON.parse()              | hh,std.json", "contents": "JSON.parse(${1})"},
+    {"trigger": "JSON.toJSON                | hh,std.json", "contents": "${1:对象可以自定义toJSON方法}"},
+    // 面向对象编程 (oop)
+    //     实例对象与 new 命令                           oop - new
+    //     this 关键字                                   oop - this
+    //     对象的继承                                    oop - proto (prototype)
+    //     Object 对象的相关方法                         oop - object
+    //     严格模式                                      oop - strict
+    // 异步操作 (async)
+    //     概述                                          asy - sum
+    //     定时器                                        asy - timer
+    //     Promise 对象                                  asy - promise
+    // DOM (dom)
+    //     概述                                          dom - sum
+    //     Node 接口                                     dom - node
+    //     NodeList 接口，HTMLCollection 接口            dom - nodeList
+    //     ParentNode 接口，ChildNode 接口               dom - nodeChild (parentnode)
+    //     Document 节点                                 dom - doc (document)
+    //     Element 节点                                  dom - ele (element)
+    //     属性的操作                                    dom - attr (attributes)
+    //     Text 节点和 DocumentFragment 节点             dom - text
+    //     CSS 操作                                      dom - css
+    //     Mutation Observer API                         dom - obs (dom变动异步监视api)
+    // 事件 (event)
+    //     EventTarget 接口                              eve - Target
+    //     事件模型                                      eve - model
+    //     Event 对象                                    eve - Event
+    //     鼠标事件                                      eve - mouse
+    //     键盘事件                                      eve - key (keyboard)
+    //     进度事件                                      eve - prog (progress)
+    //     表单事件                                      eve - form
+    //     触摸事件                                      eve - touch
+    //     拖拉事件                                      eve - drag
+    //     其他常见事件                                  eve - other
+    //     GlobalEventHandlers 接口                      eve - hand (Handler)
+    // BOM
+    //     浏览器模型概述                                bom - sum
+    //     window 对象                                   bom - window
+    //     Navigator 对象，Screen 对象                   bom - nav (navigator)
+    //     Cookie                                        bom - cook (cookie)
+    //     XMLHttpRequest 对象                           bom - xml (xmlhttprequest)
+    //     同源限制                                      bom - orig (same-origin)
+    //     CORS 通信                                     bom - cors
+    //     Storage 接口                                  bom - stor (storage)
+    {"trigger": "localStorage.setItem()    | hh,bom.storage", "contents": "localStorage.setItem($1)"},
+    {"trigger": "localStorage.getItem()    | hh,bom.storage", "contents": "localStorage.getItem($1)"},
+    {"trigger": "localStorage.removeItem() | hh,bom.storage", "contents": "localStorage.removeItem($1)"},
+    {"trigger": "localStorage.clear()      | hh,bom.storage", "contents": "localStorage.clear($1)"},
+    {"trigger": "localStorage.key()        | hh,bom.storage", "contents": "localStorage.key($1)"},
+    {"trigger": "sessionStore.setItem()    | hh,bom.storage", "contents": "sessionStorage.setItem($1)"},
+    {"trigger": "sessionStore.getItem()    | hh,bom.storage", "contents": "sessionStorage.getItem($1)"},
+    {"trigger": "sessionStore.removeItem() | hh,bom.storage", "contents": "sessionStorage.removeItem($1)"},
+    {"trigger": "sessionStore.clear()      | hh,bom.storage", "contents": "sessionStorage.clear($1)"},
+    {"trigger": "sessionStore.key()        | hh,bom.storage", "contents": "sessionStorage.key($1)"},
+    //     History 对象                                  bom - hist
+    //     Location, URL, URLSearchParams 对象           bom - url
+    //     ArrayBuffer 对象，Blob 对象                   bom - buf
+    //     File 对象，FileList 对象，FileReader 对象     bom - file
+    //     表单，FormData 对象                           bom - form
+    // 网页元素接口 (element)
+    //     <a>                                           ele - a
+    //     <img>                                         ele - image
+    //     <form>                                        ele - form
+    //     <input>                                       ele - input
+    //     <button>                                      ele - button
+    //     <option>                                      ele - option
+    //     <video>，<audio>                              ele - video
+  ]
+}
