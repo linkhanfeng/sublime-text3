@@ -14,5 +14,10 @@ Packages/User/Package Control.ca-bundle
 Packages/User/Package Control.system-ca-bundle
 Packages/User/Package Control.cache/
 Packages/User/Package Control.ca-certs/
+
+# 自定义过的软件包
+!Packages/JavaScript
+!Packages/Vuejs Snippets
+
 # Don't ignore
 !.gitignore
