@@ -14,8 +14,11 @@ export default {
 
     }
   },
+  computed: {
+    computedName () {
+    }
+  },
   created () {
-    this.getWeightTypes()
   },
   methods: {
     funName () {
@@ -26,6 +29,7 @@ export default {
 
 <style lang="${2:css}" scoped>
 </style>
+
 ]]></content>
   <tabTrigger>vuec</tabTrigger>
   <scope>text.html.vue</scope>

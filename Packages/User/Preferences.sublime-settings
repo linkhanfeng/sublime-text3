@@ -21,6 +21,7 @@
 	"index_exclude_patterns":
 	[
 		"*.log",
+		"node_modules",
 		"node_modules/*"
 	],
 	"line_padding_bottom": -1,

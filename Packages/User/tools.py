@@ -81,6 +81,16 @@ class OpenCompletionsFileCommand(sublime_plugin.WindowCommand):
         path = sublime.packages_path() + '/User/MySubl/js.sublime-completions'
         self.window.open_file(path)
 
+# 打开 tools.py 文件
+class OpenToolsFileCommand(sublime_plugin.WindowCommand):
+
+    def run(self):
+        # view = self.window.active_view()
+        toolPath = sublime.packages_path() + '/User/tools.py'
+        commandPath = sublime.packages_path() + '/User/Default.sublime-commands'
+        self.window.open_file(commandPath)
+        self.window.open_file(toolPath)
+
 # 打开tips文件
 
 
@@ -91,8 +101,21 @@ class OpenTipsCommand(sublime_plugin.WindowCommand):
         path = '/Users/hf/it/note/dev/developer/tips.md'
         self.window.open_file(path)
 
-# 将选择的文本转换为 completions
 
+# 将选择的文本转换为 completions
+class VuexAttrCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        view = self.view
+        selList = self.view.sel()
+        for selRegion in selList:
+            selTxt = self.view.substr(selRegion)
+            print(11111, selTxt)
+            getterStr = "\tweightModifyInterFace (state) {\n\t\treturn state.weightModifyInterFace\n\t},\n"
+            setterStr = "\tSET_weightModifyInterFace (state, param) {\n\t\tstate.weightModifyInterFace = param\n\t},\n"
+            actionStr = "\tasync SET_weightModifyInterFace_ASYNC ({ commit }, param) {\n\t\tcommit('SET_weightModifyInterFace', param)\n\t},"
+            allStr = getterStr + setterStr + actionStr
+            formatedStr = allStr.replace('weightModifyInterFace', selTxt)
+            self.view.replace(edit,  sublime.Region(selRegion.a, selRegion.b), formatedStr)
 
 class SelToCompletionCommand(sublime_plugin.TextCommand):
     def run(self, edit):

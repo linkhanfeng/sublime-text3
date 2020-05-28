@@ -24,8 +24,16 @@
         "command": "open_completions_file"
     },
     {
+        "caption": "my: open tools file",
+        "command": "open_tools_file"
+    },
+    {
         "caption": "my: open tips",
         "command": "open_tips"
+    },
+    {
+        "caption": "my: vuex attr",
+        "command": "vuex_attr"
     },
     {
         "caption": "my: sel to completion",
