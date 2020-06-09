@@ -39,4 +39,8 @@
         "caption": "my: sel to completion",
         "command": "sel_to_completion"
     },
+    {
+        "caption": "my: insert markdown meta",
+        "command": "insert_markdown_meta"
+    },
 ]

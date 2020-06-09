@@ -15,6 +15,7 @@
 	"hot_exit": true,
 	"ignored_packages":
 	[
+		"All Autocomplete",
 		"Markdown",
 		"SublimeLinter-stylelint",
 		"Vintage"

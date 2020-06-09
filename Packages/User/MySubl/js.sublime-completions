@@ -56,8 +56,8 @@
     {"trigger": "isString(*)                       | jj typs.is", "contents": "type.isString(${1})"},
     {"trigger": "isNumber(*)                       | jj typs.is", "contents": "type.isNumber(${1})"},
     {"trigger": "isBoolean(*)                      | jj typs.is", "contents": "type.isBoolean(${1})"},
-    {"trigger": "false                             | jj typs.Boolean", "contents": "length"},
-    {"trigger": "true                              | jj typs.Boolean", "contents": "length"},
+    {"trigger": "false                             | jj typs.Boolean", "contents": "false"},
+    {"trigger": "true                              | jj typs.Boolean", "contents": "true"},
     {"trigger": "isFunction(*)                     | jj typs.is", "contents": "type.isFunction(${1})"},
     {"trigger": "isRegExp(*)                       | jj typs.is", "contents": "type.isRegExp(${1})"},
     //     null，undefined 和布尔值                      typ - null
@@ -143,54 +143,82 @@
     {"trigger": "Object()                          | jj std.obj", "contents": "Object(${1:对象返回本身,确保一个值一定是对象})"},
     {"trigger": "isObject(*)                       | jj std.obj", "contents": "function isObject (value) {\n\treturn value === Object(value)\n}"},
     {"trigger": "instanceof                        | jj std.obj", "contents": "instanceof"},
+    {"trigger": "obj.constructor                   | jj std.obj", "contents": "constructor${1:返回实例的构造函数}"},
     {"trigger": "new Object()                      | jj std.obj", "contents": "new Object(${1:})"},
     {"trigger": "Object.keys()                     | jj std.obj", "contents": "Object.keys(${3:自身可枚举的属性})"},
     {"trigger": "Object.length(*)                  | jj std.obj", "contents": "Object.keys(${1:}).length"},
-    {"trigger": "Object.getOwnPropertyNames()      | jj std.obj", "contents": "Object.getOwnPropertyNames(${3:包括不可枚举属性,使用kes()代替})"},
+    // {"trigger": "Object.getOwnPropertyNames()   | jj std.obj", "contents": "Object.getOwnPropertyNames(${3:包括不可枚举属性,使用kes()代替})"},
     {"trigger": "Object.assign()                   | jj std.obj", "contents": "Object.assign(${3:obj1,2,3..})"},
-
-    {"trigger": "Object.getOwnPropertyDescriptor() | jj std.obj", "contents": "Object.getOwnPropertyDescriptor(${1:获取某个属性的描述对象。})"},
-    {"trigger": "Object.defineProperty()           | jj std.obj", "contents": "Object.defineProperty(${1:通过描述对象，定义某个属性。})"},
-    {"trigger": "Object.defineProperties()         | jj std.obj", "contents": "Object.defineProperties(${1:通过描述对象，定义多个属性。})"},
-    {"trigger": "Object.preventExtensions()        | jj std.obj", "contents": "Object.preventExtensions(${1:防止对象扩展。})"},
-    {"trigger": "Object.isExtensible()             | jj std.obj", "contents": "Object.isExtensible(${1:判断对象是否可扩展。})"},
-    {"trigger": "Object.seal()                     | jj std.obj", "contents": "Object.seal(${1:禁止对象配置。})"},
-    {"trigger": "Object.isSealed()                 | jj std.obj", "contents": "Object.isSealed(${1:判断一个对象是否可配置。})"},
-    {"trigger": "Object.freeze()                   | jj std.obj", "contents": "Object.freeze(${1:冻结一个对象。})"},
-    {"trigger": "Object.isFrozen()                 | jj std.obj", "contents": "Object.isFrozen(${1:判断一个对象是否被冻结。})"},
     {"trigger": "Object.create()                   | jj std.obj", "contents": "Object.create(${1:该方法可以指定原型对象和属性，返回一个新的对象。})"},
-    {"trigger": "Object.getPrototypeOf()           | jj std.obj", "contents": "Object.getPrototypeOf(${1:获取对象的Prototype对象。})"},
+    {"trigger": "prototype                         | jj std.obj", "contents": "prototype"},
+    {"trigger": "Object.getPrototypeOf()           | jj std.obj", "contents": "Object.getPrototypeOf(${1:获取对实例的 prototype 对象,默认指向其构造函数的 prototype 对象})"},
     {"trigger": "obj.valueOf()                     | jj std.obj", "contents": "obj.valueOf(${1:返回当前对象对应的值。})"},
     {"trigger": "obj.toString()                    | jj std.obj", "contents": "obj.toString(${1:返回当前对象对应的字符串形式。})"},
     {"trigger": "obj.toLocaleString()              | jj std.obj", "contents": "obj.toLocaleString(${1:返回当前对象对应的本地字符串形式。})"},
     {"trigger": "obj.hasOwnProperty()              | jj std.obj", "contents": "obj.hasOwnProperty(${1:判断某个属性是否为当前实例自身,还是继承的})"},
     {"trigger": "obj.isPrototypeOf()               | jj std.obj", "contents": "obj.isPrototypeOf(${1:判断当前对象是否为另一个对象的原型。})"},
-    {"trigger": "obj.propertyIsEnumerable()        | jj std.obj", "contents": "obj.propertyIsEnumerable(${1:判断某个属性是否可枚举。})"},
     //     属性描述对象                                  std - attr
+    {"trigger": "Object.getOwnPropertyDescriptor() | jj std.obj.attr", "contents": "Object.getOwnPropertyDescriptor(${1:获取某个属性的描述对象。})"},
+    {"trigger": "Object.getOwnPropertyNames()      | jj std.obj.attr", "contents": "Object.getOwnPropertyNames(${3:包括不可枚举属性,使用kes()代替})"},
+    {"trigger": "Object.defineProperty()           | jj std.obj.attr", "contents": "Object.defineProperty(${1:通过描述对象，定义某个属性。})"},
+    {"trigger": "Object.defineProperties()         | jj std.obj.attr", "contents": "Object.defineProperties(${1:通过描述对象，定义多个属性。})"},
+    {"trigger": "obj.propertyIsEnumerable()        | jj std.obj.attr", "contents": "Object.getOwnPropertyDescriptor(${3:obj}, ${4:'p'判断某个属性是否可枚举。})"},
+    {"trigger": "Object.preventExtensions()        | jj std.obj.attr", "contents": "Object.preventExtensions(${1:防止对象扩展。})"},
+    {"trigger": "Object.isExtensible()             | jj std.obj.attr", "contents": "Object.isExtensible(${1:判断对象是否可扩展。})"},
+    {"trigger": "Object.seal()                     | jj std.obj.attr", "contents": "Object.seal(${1:禁止对象配置。})"},
+    {"trigger": "Object.isSealed()                 | jj std.obj.attr", "contents": "Object.isSealed(${1:判断一个对象是否可配置。})"},
+    {"trigger": "Object.freeze()                   | jj std.obj.attr", "contents": "Object.freeze(${1:冻结一个对象。})"},
+    {"trigger": "Object.isFrozen()                 | jj std.obj.attr", "contents": "Object.isFrozen(${1:判断一个对象是否被冻结。})"},
+
     //     Array 对象                                    std - arr
     //                      构造函数
+    {"trigger": "new Array                         | jj std.arr", "contents": "new Array(${3:构造函数})"},
     //                      静态方法
-    //                      Array.isArray()
+    {"trigger": "Array.isArray()                   | jj std.arr", "contents": "Array.isArray(${3:arr})"},
     //                      实例方法
-    //                      valueOf()，toString()
-    //                      push()，pop()
-    //                      shift()，unshift()
-    //                      join()
-    //                      concat()
-    //                      reverse()
-    //                      slice()
-    //                      splice()
-    //                      sort()
-    //                      map()
-    //                      forEach()
-    //                      filter()
-    //                      some()，every()
-    //                      reduce()，reduceRight()
-    //                      indexOf()，lastIndexOf()
+    {"trigger": "arr.toString()                    | jj std.arr", "contents": "toString()"},
+    {"trigger": "arr.valueOf()                     | jj std.arr", "contents": "valueOf()"},
+    {"trigger": "arr.pop()                         | jj std.arr", "contents": "pop(${3:变异-末尾删除})"},
+    {"trigger": "arr.push()                        | jj std.arr", "contents": "push(${3:变异-末尾新增})"},
+    {"trigger": "arr.shift()                       | jj std.arr", "contents": "shift(${3:变异-开头删除})"},
+    {"trigger": "arr.unshift()                     | jj std.arr", "contents": "unshift(${3:变异-开头新增})"},
+    {"trigger": "arr.join()                        | jj std.arr", "contents": "join(${3:默认逗号})"},
+    {"trigger": "arr.join().arrLike                | jj std.arr", "contents": "Array.prototype.join.call('hello', '-')"},
+    {"trigger": "arr.concat()                      | jj std.arr", "contents": "${2:['hello']}.concat(${3:['world']})"},
+    {"trigger": "arr.reverse()                     | jj std.arr", "contents": "reverse()${3:变异-倒序}"},
+    {"trigger": "arr.slice()                       | jj std.arr", "contents": "slice(${1:start}, ${2:end})"},
+    {"trigger": "arr.splice()                      | jj std.arr", "contents": "arr.splice(${3:start包含, count, addElement1, addElement2, ...})${4:变异}"},
+    {"trigger": "arr.sort()                        | jj std.arr", "contents": "sort()"},
+    {"trigger": "arr.map()                         | jj std.arr", "contents": "arr.map(${3:n} => {\n\t${4:}return${5:}\n})\n"},
+    {"trigger": "arr.forEach()                     | jj std.arr", "contents": "forEach(${3:n} => {\n\t${4://}\n})\n"},
+    {"trigger": "arr.filter()                      | jj std.arr", "contents": "arr.filter(${3:n} => {\n\t${4:}return ${5:n === true}\n})\n"},
+    {"trigger": "arr.some()                        | jj std.arr", "contents": "arr.some(${3:n} => {\n\t${4:}return ${5:n === true 逻辑 或}\n})\n"},
+    {"trigger": "arr.every()                       | jj std.arr", "contents": "arr.every(${3:n} => {\n\t${4:}return ${5:n === true 逻辑 与}\n})\n"},
+    {"trigger": "arr.reduce()                      | jj std.arr", "contents": "reduce(fun)累加元素"},
+    {"trigger": "arr.reduceRight()                 | jj std.arr", "contents": "reduceRight(fun)累加元素"},
+    {"trigger": "arr.indexOf()                     | jj std.arr", "contents": "indexOf(${3:item})"},
+    {"trigger": "arr.lastIndexOf()                 | jj std.arr", "contents": "lastIndexOf(${3:item})"},
     //     包装对象                                      std - wrap (wrapper)
     //     Boolean 对象                                  std - bool
     //     Number 对象                                   std - num
     //     String 对象                                   std - str
+    {"trigger": "String.fromCharCode()             | jj std.str", "contents": "String.fromCharCode(${1})"},
+    {"trigger": "charAt()                          | jj std.str", "contents": "charAt(${1})"},
+    {"trigger": "charCodeAt()                      | jj std.str", "contents": "charCodeAt(${1})"},
+    {"trigger": "concat()                          | jj std.str", "contents": "concat(${1})"},
+    {"trigger": "slice()                           | jj std.str", "contents": "slice(${1})"},
+    {"trigger": "substring()                       | jj std.str", "contents": "substring(${1})"},
+    {"trigger": "substr()                          | jj std.str", "contents": "substr(${1})"},
+    {"trigger": "indexOf()                         | jj std.str", "contents": "indexOf(${1})"},
+    {"trigger": "lastIndexOf()                     | jj std.str", "contents": "lastIndexOf(${1})"},
+    {"trigger": "trim()                            | jj std.str", "contents": "trim(${1})${2}"},
+    {"trigger": "toLowerCase()                     | jj std.str", "contents": "toLowerCase()${1}"},
+    {"trigger": "toUpperCase()                     | jj std.str", "contents": "toUpperCase()${1}"},
+    {"trigger": "match()                           | jj std.str", "contents": "match(${1})"},
+    {"trigger": "search()                          | jj std.str", "contents": "search(${1})"},
+    {"trigger": "replace()                         | jj std.str", "contents": "replace(${1})"},
+    {"trigger": "split()                           | jj std.str", "contents": "split(${1})"},
+    {"trigger": "localeCompare()                   | jj std.str", "contents": "localeCompare(${1})"},
     //     Math 对象                                     std - math
     {"trigger": "Math.E                            | jj std.math", "contents": "Math.E${1:常数e。}"},
     {"trigger": "Math.LN2                          | jj std.math", "contents": "Math.LN2${1:2 的自然对数。}"},
@@ -221,14 +249,21 @@
     {"trigger": "JSON.toJSON                       | jj std.json", "contents": "${1:对象可以自定义toJSON方法}"},
     // 面向对象编程 (oop)
     //     实例对象与 new 命令                           oop - new
+    {"trigger": "constructor                       | jj oop.constructor", "contents": "var Animal = function () {\n\tthis.type = '猫科-Animal'\n\tthis.eat = function () { // 2.2 公有方法\n\t\tconsole.log(`${this.name}吃老鼠-Animal`)\n\t}\n}\nvar Cat = function (name) {\n\t'use strict'\n\t// 3.0 继承方式1: 构造函数间 继承机制\n\t// Animal.apply(this, arguments)\n\t// 1.0 私有属性和方法: 实例间互不影响\n\tthis.name = name // 1.1 私有属性\n\tthis.getName = function () { // 1.2 私有方法\n\t\treturn `小猫: ${this.name}`\n\t}\n}\n// 2.0 公有: 实例间共享 不变的 数据,节省内存\nCat.prototype = {\n\ttype: '猫科', // 2.1 公有属性\n\teat: function () { // 2.2 公有方法\n\t\tconsole.log(`${this.name}吃老鼠`)\n\t}\n}\n\n// 3.1 继承方式2: 修改构造函数的 prototype 指向\nCat.prototype = new Animal()\nCat.prototype.constructor = Cat\n\nvar obj = new Cat('小黑')\nconsole.log(obj) // 实例\nconsole.log(Object.getPrototypeOf(obj)) // 实例的 prototype 对象; 默认指向其构造函数的 prototype 对象\n\n// var createObj = {\n//\t price: 300,\n//\t getPrice: function () {\n//\t\t return this.price + '元'\n//\t }\n// }\n\n// var obj1 = Object.create(createObj)\n// var obj2 = Object.create(createObj)\n// obj1.price = 600\n// console.log(obj1.getPrice())\n// console.log(obj2.getPrice())\n// console.log(obj1.constructor)\n"},
+    {"trigger": "Object.create                     | jj oop.create", "contents": "var createObj = {\n\tprice: 300,\n\tgetPrice: function () {\n\t\treturn this.price + '元'\n\t}\n}\n\nvar obj1 = Object.create(createObj)\nvar obj2 = Object.create(createObj)\nconsole.log(obj1, obj2)"},
     //     this 关键字                                   oop - this
     //     对象的继承                                    oop - proto (prototype)
     //     Object 对象的相关方法                         oop - object
     //     严格模式                                      oop - strict
     // 异步操作 (async)
-    //     概述                                          asy - sum
-    //     定时器                                        asy - timer
-    //     Promise 对象                                  asy - promise
+    //     概述                                          async - sum
+    //     定时器                                        async - timer
+    {"trigger": "setTimeout                        | jj std.async", "contents": "setTimeout(() => {\n\t${4://}\n}, ${3:1000})"},
+    {"trigger": "setInterval                       | jj std.async", "contents": "var ${3:timer} = setInterval(() => {\n\t${5://}\n}, ${4:1000})"},
+    {"trigger": "clearInterval                     | jj std.async", "contents": "clearInterval(${3:timer})"},
+    {"trigger": "clearTimeout                      | jj std.async", "contents": "clearTimeout(${3:timer})"},
+    {"trigger": "Promise                      | jj std.async", "contents": "var ${3:p1} = new Promise(function (resolve, reject) {\n\t${4:var value = 1}\n\tif (value) {\n\t\tresolve(value)\n\t} else {\n\t\treject(new Error())\n\t}\n})\n"},
+    //     Promise 对象                                  async - promise
     // DOM (dom)
     //     概述                                          dom - sum
     //     Node 接口                                     dom - node

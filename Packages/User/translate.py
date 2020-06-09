@@ -70,7 +70,7 @@ class GoogleTranslateCommand(sublime_plugin.TextCommand):
             google_word = google_word + item[0]
             google_word_html = google_word_html + '<p style="margin: 4px;">' + item[0] + '</p>'
 
-        sublime.set_clipboard(baidu_word.lower())
+        sublime.set_clipboard(baidu_word.lower() + '\n' + google_word.lower())
 
         popupHtml = '<div style="border:1px solid #ccc; padding: 0 5px;"><span style="font-size:12px;margin:0;">百度:</span>' + baidu_word_html + '</div>' + '<div style="border:1px solid #ccc; padding: 0 5px;"><span style="font-size:12px;margin:0;">谷歌:</span>' + google_word_html + '</div>'
         self.view.show_popup(popupHtml, sublime.HIDE_ON_MOUSE_MOVE_AWAY, -1, 600, 500)

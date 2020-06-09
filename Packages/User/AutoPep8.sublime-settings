@@ -1,3 +1,4 @@
 {
   "max-line-length": 1000000000,
+  "debug": true
 }
