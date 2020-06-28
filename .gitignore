@@ -5,6 +5,7 @@ Index/
 Installed Packages/
 Local/
 Packages/*
+KEEPME
 
 # user 文件夹
 !Packages/User
@@ -14,6 +15,9 @@ Packages/User/Package Control.ca-bundle
 Packages/User/Package Control.system-ca-bundle
 Packages/User/Package Control.cache/
 Packages/User/Package Control.ca-certs/
+#Packages/User/*ca-bundle
+#Packages/User/*ca-bundle
+#Packages/User/*.crt
 
 # 自定义过的软件包
 !Packages/JavaScript
