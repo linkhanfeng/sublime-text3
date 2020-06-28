@@ -2,6 +2,8 @@ import json
 import urllib
 import re
 import hashlib
+import os
+import platform
 from string import Template
 
 import sublime
@@ -69,6 +71,9 @@ class GoogleTranslateCommand(sublime_plugin.TextCommand):
         for item in res_google[0]:
             google_word = google_word + item[0]
             google_word_html = google_word_html + '<p style="margin: 4px;">' + item[0] + '</p>'
+
+        if platform.system() == 'Darwin':
+            os.popen("say {0}".format(s_word if isEn else baidu_word))
 
         sublime.set_clipboard(baidu_word.lower() + '\n' + google_word.lower())
 

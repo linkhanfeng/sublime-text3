@@ -1,0 +1,4 @@
+{
+  "shell_cmd": "python3 $file",
+  "selector": "*.py"
+}
