@@ -3,6 +3,7 @@
 	[
 		".env",
 		"env-example",
-		"hosts"
+		"hosts",
+		".gitignore"
 	]
 }
