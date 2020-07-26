@@ -4,7 +4,7 @@
 	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/Materialize/schemes/Material Solarized Dark.tmTheme",
-	"create_window_at_startup": true,
+	"create_window_at_startup": false,
 	"draw_white_space": "all",
 	"find_selected_text": true,
 	"font_face": "M+ 2m",
@@ -13,6 +13,7 @@
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": true,
+	"remember_open_files": true,
 	"ignored_packages":
 	[
 		"Markdown",
