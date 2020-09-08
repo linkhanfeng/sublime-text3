@@ -25,7 +25,6 @@
 		"Emmet",
 		"ESLint-Formatter",
 		"ExpandRegion",
-		"FileBrowser",
 		"FileManager",
 		"Generic Config",
 		"HTML-CSS-JS Prettify",
@@ -41,13 +40,14 @@
 		"Pretty JSON",
 		"Sass",
 		"SFTP",
+		"Stylus",
 		"SublimeLinter",
 		"SublimeLinter-eslint",
 		"SublimeLinter-stylelint",
-		"SublimeREPL",
 		"Terminus",
 		"Trimmer",
 		"Vue Syntax Highlight",
-		"Vuejs Snippets"
+		"Vuejs Snippets",
+		"wxapp"
 	]
 }

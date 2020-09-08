@@ -20,8 +20,13 @@
     { "keys": ["alt+`"], "command": "toggle_terminus_panel" }, // terminus
     { "keys": ["super+shift+space"], "command": "expand_region" }, // expandRegion
     { "keys": ["f1"],"command": "dired","args": {"immediate": true,"single_pane": true,"other_group": "left","project": true}}, // fileBrower
-    { "keys": ["super+n"], "command": "fm_create" }, // fileManger
+    { "keys": ["super+alt+n"], "command": "fm_create" }, // fileManger
     { "keys": ["super+;"], "command": "ace_jump_word" }, // acejump
+    // Evaluate Math Expression
+    {
+        "keys": ["super+shift+y"],
+        "command": "emmet_evaluate_math"
+    },
     // { "keys": ["super+shift+h"], "command": "chain", "args": { "commands": [["htmlprettify"], ["format_eslint"]] } },
     // 自定义插件
     { "keys": ["super+alt+g"], "command": "google_translate" }, // 翻译

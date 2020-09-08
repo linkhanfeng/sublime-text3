@@ -44,7 +44,9 @@ class OpenInBrowerCommand(sublime_plugin.TextCommand):
         path = kwargs.get('url', None) if kwargs.get(
             'url', None) else self.view.file_name()
         path = 'file://' + path
-        webbrowser.open_new_tab(path)
+        path = path.encode('utf-8')
+        print(55555, path)
+        # webbrowser.open_new_tab(path)
 
 # 打开浏览器 - js 文档
 

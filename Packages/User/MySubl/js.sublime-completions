@@ -74,21 +74,21 @@
     {"trigger": "delete                            | jj typs.obj", "contents": "delete ${1:o.p 只能删除自身的属性}"},
     {"trigger": "in                                | jj typs.obj", "contents": "'p' in o 无法判断属性继承还是自身;推荐使用 hasOwnProperty 替代"},
     {"trigger": "forIn                             | jj typs.obj", "contents": "for (var ${3:key包含继承的属性,使用keys()替代} in obj) {\n\t${3:key包含继承的属性,使用keys()替代}\n}"},
-    //     函数                                          typ - fun
-    {"trigger": "fun.A                             | jj typs.fun", "contents": "function ${3:name} (${4:}) {\n\t${5:// 函数是一种可执行的 值,同理命令式函数会提升,且是完整函数而不是undefind,函数表达式为undefind报错}\n}"},
-    {"trigger": "fun.B                             | jj typs.fun", "contents": "var ${3:name} = function (${4:}) {\n\t${5:// ...}\n}"},
-    {"trigger": "fun.BB                            | jj typs.fun", "contents": "var ${3:name} = function ${3:name} (${4:}) {\n\t${5:// ...}\n}"},
-    {"trigger": "fun.C                             | jj typs.fun", "contents": "var ${1:name} = new Function('${2:x}', 'return ${2:x}')"},
-    {"trigger": "f.name()                          | jj typs.fun", "contents": "name${1:函数名称,具名函数优先}"},
-    {"trigger": "f.length()                        | jj typs.fun", "contents": "定义时的参数个数"},
-    {"trigger": "f.toString()                      | jj typs.fun", "contents": "函数的源码"},
-    {"trigger": "f.scope                           | jj typs.fun", "contents": "var x = function () { // 函数本身的作用域: 是定义时所在的作用域，而不是调用时所在的作用域。\n\tconsole.log(a) // 此处的 a 是 window.a\n}\nfunction y (x) {\n\tvar a = 2\n\tx()\n}\ny(x) // 返回 undefined; 因为 函数x定义时的作用域在window下"},
-    {"trigger": "f.params                          | jj typs.fun", "contents": "var obj = { p: 1 }\nvar obj2 = { p: 'pp' }\nvar str = 'a'\nfunction f (o, s, o2) {\n\to.p = 2 // 指向同一个地址\n\ts = 'b' // 指向一个新地址,原地址不变\n\to2 = { p: '${3:}' } // 指向一个新地址,原地址不变\n}\nf(obj, str)\nconsole.log(obj.p) // 2 传址(pass by reference): 函数内和函数外的\\\"属性值\\\"用的同一个地址; 复合类型的值（数组、对象、其他函数）\nconsole.log(str) // a 传值(passes by value): 函数内不会影响函数外; 原始类型的值（数值、字符串、布尔值）\nconsole.log(obj2.p) // 'pp' 不会影响; 根本原因可以这样理解:属性值是一个地址的软连接; 而任何数据类型都是地址的硬链接;"},
-    {"trigger": "f.arguments                       | jj typs.fun", "contents": "var args = Array.prototype.slice.call(arguments)"},
-    {"trigger": "f.IIFE.a                          | jj typs.fun", "contents": "(function (${3:}) {\n\t${4://}\n})();"},
-    {"trigger": "f.IIFE.b                          | jj typs.fun", "contents": "(function (${3:}) {\n\t${4://}\n}());"},
-    {"trigger": "f.IIFE.c                          | jj typs.fun", "contents": "true && (function (${3:}) {\n\t${4:// 两个IIFE同时使用可以不使用分号}\n})()"},
-    {"trigger": "f.eval()                          | jj typs.fun", "contents": "eval('${1:在当前作用域注入代码,不利于引擎优化,一般不推荐.}')"},
+    //     函数                                          typ - fn
+    {"trigger": "fn.A                              | jj typs.fn", "contents": "function ${3:name} (${4:}) {\n\t${5:// 函数是一种可执行的 值,同理命令式函数会提升,且是完整函数而不是undefind,函数表达式为undefind报错}\n}"},
+    {"trigger": "fn.B                              | jj typs.fn", "contents": "var ${3:name} = function (${4:}) {\n\t${5:// ...}\n}"},
+    {"trigger": "fn.BB                             | jj typs.fn", "contents": "var ${3:name} = function ${3:name} (${4:}) {\n\t${5:// ...}\n}"},
+    {"trigger": "fn.C                              | jj typs.fn", "contents": "var ${1:name} = new Function('${2:x}', 'return ${2:x}')"},
+    {"trigger": "f.name()                          | jj typs.fn", "contents": "name${1:函数名称,具名函数优先}"},
+    {"trigger": "f.length()                        | jj typs.fn", "contents": "定义时的参数个数"},
+    {"trigger": "f.toString()                      | jj typs.fn", "contents": "函数的源码"},
+    {"trigger": "f.scope                           | jj typs.fn", "contents": "var x = function () { // 函数本身的作用域: 是定义时所在的作用域，而不是调用时所在的作用域。\n\tconsole.log(a) // 此处的 a 是 window.a\n}\nfunction y (x) {\n\tvar a = 2\n\tx()\n}\ny(x) // 返回 undefined; 因为 函数x定义时的作用域在window下"},
+    {"trigger": "f.params                          | jj typs.fn", "contents": "var obj = { p: 1 }\nvar obj2 = { p: 'pp' }\nvar str = 'a'\nfunction f (o, s, o2) {\n\to.p = 2 // 指向同一个地址\n\ts = 'b' // 指向一个新地址,原地址不变\n\to2 = { p: '${3:}' } // 指向一个新地址,原地址不变\n}\nf(obj, str)\nconsole.log(obj.p) // 2 传址(pass by reference): 函数内和函数外的\\\"属性值\\\"用的同一个地址; 复合类型的值（数组、对象、其他函数）\nconsole.log(str) // a 传值(passes by value): 函数内不会影响函数外; 原始类型的值（数值、字符串、布尔值）\nconsole.log(obj2.p) // 'pp' 不会影响; 根本原因可以这样理解:属性值是一个地址的软连接; 而任何数据类型都是地址的硬链接;"},
+    {"trigger": "f.arguments                       | jj typs.fn", "contents": "var args = Array.prototype.slice.call(arguments)"},
+    {"trigger": "f.IIFE.a                          | jj typs.fn", "contents": "(function (${3:}) {\n\t${4://}\n})();"},
+    {"trigger": "f.IIFE.b                          | jj typs.fn", "contents": "(function (${3:}) {\n\t${4://}\n}());"},
+    {"trigger": "f.IIFE.c                          | jj typs.fn", "contents": "true && (function (${3:}) {\n\t${4:// 两个IIFE同时使用可以不使用分号}\n})()"},
+    {"trigger": "f.eval()                          | jj typs.fn", "contents": "eval('${1:在当前作用域注入代码,不利于引擎优化,一般不推荐.}')"},
     //     数组                                          typ - arr
     {"trigger": "a.overview                        | jj typs.arr", "contents": "var a = [0, 1]\nif (a['1'] === a[1.00] && a['1'] === a[1]) {\n\tconsole.log(true) // 本质上数组就是有序的 对象, 所以 index 本质上也是字符串\n}\na.c = 'c' // [0, 1, c: \\\"c\\\"] 本质上数组就是对象 typeof a; object\nObject.keys(a) // [\\\"0\\\", \\\"1\\\", \\\"c\\\"] 本质对象\na.forEach(index => { console.log(index) }) // 0,1,undefined 数组的方法无法应用于非整数index\n\nvar arr = ['a', 'b']\nconsole.log(arr.length) // 2\narr[1000] = 'e'\nconsole.log(arr.length, arr[2]) // 1001,undefined 比最大的那个整数键大1; 空位置返回 undefind\narr.length = 0 // [] 可以清空正常的数组"},
     {"trigger": "a.arrayLike                       | jj typs.arr", "contents": "Array.prototype.slice.call(${1:dom集合等类数组对象})"},
@@ -333,18 +333,26 @@
     //     Text 节点和 DocumentFragment 节点             dom - text
     //     CSS 操作                                      dom - css
     //     Mutation Observer API                         dom - obs (dom变动异步监视api)
-    // 事件 (event)
-    //     EventTarget 接口                              eve - Target
-    //     事件模型                                      eve - model
-    //     Event 对象                                    eve - Event
-    //     鼠标事件                                      eve - mouse
-    //     键盘事件                                      eve - key (keyboard)
-    //     进度事件                                      eve - prog (progress)
-    //     表单事件                                      eve - form
-    //     触摸事件                                      eve - touch
-    //     拖拉事件                                      eve - drag
-    //     其他常见事件                                  eve - other
-    //     GlobalEventHandlers 接口                      eve - hand (Handler)
+    // 事件 (event) 事件的本质是程序各个组成部分之间的一种通信方式
+    //     EventTarget 接口                              event - target
+    //     button.addEventListener('${1:click}', ${2:fn}, false);
+    {"trigger": "addEventListener                  | jj event.target", "contents": "addEventListener('${1:click}', ${2:fn}, false)"},
+    {"trigger": "removeEventListener               | jj event.target", "contents": "removeEventListener('${1:click}', ${2:fn}, false)"},
+    {"trigger": "dispatchEvent                     | jj event.target", "contents": "dispatchEvent(${1:Event})"},
+    //     事件模型                                      event - model
+    {"trigger": "preventDefault                    | jj event.model", "contents": "event.preventDefault() // 取消浏览器默认行为"},
+    {"trigger": "stopPropagation                   | jj event.model", "contents": "event.stopPropagation() // 阻止当前事件的传播"},
+    {"trigger": "stopImmediatePropagation          | jj event.model", "contents": "event.stopImmediatePropagation() // 阻止当前事件的传播并阻止该事件再次发生"},
+    {"trigger": "composedPath                      | jj event.model", "contents": "event.composedPath() // 返回事件冒泡经过的节点"},
+    //     Event 对象                                    event - Event
+    //     鼠标事件                                      event - mouse
+    //     键盘事件                                      event - key (keyboard)
+    //     进度事件                                      event - prog (progress)
+    //     表单事件                                      event - form
+    //     触摸事件                                      event - touch
+    //     拖拉事件                                      event - drag
+    //     其他常见事件                                  event - other
+    //     GlobalEventHandlers 接口                      event - hand (Handler)
     // BOM
     //     浏览器模型概述                                bom - sum
     //     window 对象                                   bom - window

@@ -7,22 +7,31 @@
 	"create_window_at_startup": false,
 	"draw_white_space": "all",
 	"find_selected_text": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"node_modules"
+	],
 	"font_face": "M+ 2m",
-	"font_size": 16,
+	"font_size": 20,
 	"gpu_window_buffer": "auto",
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": true,
-	"remember_open_files": true,
 	"ignored_packages":
 	[
 		"Markdown",
+		"SublimeLinter",
 		"SublimeLinter-stylelint",
 		"Vintage"
 	],
 	"index_exclude_patterns":
 	[
 		"*.log",
+		"*.mp3",
 		"node_modules",
 		"node_modules/*"
 	],
@@ -37,6 +46,7 @@
 	"move_to_limit_on_up_down": false,
 	"native_tabs": "system",
 	"open_files_in_new_window": false,
+	"remember_open_files": true,
 	"save_on_focus_lost": false,
 	"scroll_past_end": true,
 	"shell_environment": true,
@@ -44,7 +54,6 @@
 	"show_full_path": true,
 	"show_line_endings": true,
 	"show_navigation_bar": true,
-	"sublime_merge_path": "D:/apps/Sublime/Sublime Merge/sublime_merge.exe",
 	"tab_size": 2,
 	"theme": "Material Solarized Dark.sublime-theme",
 	"translate_tabs_to_spaces": true,
